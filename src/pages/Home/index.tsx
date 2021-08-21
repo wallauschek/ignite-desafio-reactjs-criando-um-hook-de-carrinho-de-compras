@@ -22,8 +22,8 @@ interface CartItemsAmount {
 }
 
 const Home = (): JSX.Element => {
-  const [products, setProducts] = useState<ProductFormatted[]>([]);
   const { addProduct, cart } = useCart();
+  const [products, setProducts] = useState<ProductFormatted[]>([]);
 
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
     sumAmount = {
@@ -50,9 +50,9 @@ const Home = (): JSX.Element => {
     <ProductList>
       {products.map(product =>(
         <li key={product.id}>
-          <img src={product.image} alt="Tênis de Caminhada Leve Confortável" />
-          <strong>Tênis de Caminhada Leve Confortável</strong>
-          <span>{product.price}</span>
+          <img src={product.image} alt="{product.title}" />
+          <strong>{product.title}</strong>
+          <span>{formatPrice(product.price)}</span>
           <button
             type="button"
             data-testid="add-product-button"
